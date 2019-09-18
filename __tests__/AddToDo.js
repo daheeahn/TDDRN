@@ -23,3 +23,26 @@ describe('Rendering', () => { // rendering!! // here!
     expect(wrapper.find('Button')).toHaveLength(1);
   })
 })
+
+describe('Interaction', () => {
+    let wrapper; // here!
+    let props;
+    const text = 'some ToDo';
+  
+    beforeEach(() => {
+      props = {
+          onAdded: jest.fn(), // 이 함수가 몇 번 호출되었는지 등등을 확인 가능!
+      }
+      wrapper = shallow(<AddToDo {...props}></AddToDo>);
+    //   wrapper = shallow(<AddToDo onAdded={jest.fn()}></AddToDo>); // 이 onAdded를 접근을 아래 it에서 해야하는게 이렇게하면 아래서 onAdded 못써. 그래서 위에 props로!
+
+      // Button을 한 번 클릭해야하는거잖아!
+      wrapper.find('TextInput').simulate('changeText', text);
+      wrapper.find('Button').prop('onPress')(); // 버튼 눌린 것과 같은 동작 가능!
+    })
+
+    it('should call the onAdded callback with input text', () => {
+        expect(props.onAdded).toHaveBeenCalledTimes(1); // 버튼을 눌렀을 때 콜백이 불리고
+        expect(props.onAdded).toHaveBeenCalledWith(text); // 이 text가 전달되는가?
+    })
+})
