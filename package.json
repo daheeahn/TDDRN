@@ -1,0 +1,45 @@
+{
+  "name": "TDDRN",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-native": "0.60.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "detox": "^14.3.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.4.0",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "./setup.js"
+    ]
+  },
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/TDDRN/Build/Products/Debug-iphonesimulator/TDDRN.app",
+        "build": "xcodebuild -project ios/TDDRN.xcodeproj -scheme TDDRN -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone X"
+      }
+    }
+  }
+}
