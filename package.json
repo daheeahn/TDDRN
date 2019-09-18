@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest __tests__/.*.js",
     "lint": "eslint ."
   },
   "dependencies": {

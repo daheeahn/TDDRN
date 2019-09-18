@@ -8,25 +8,17 @@ import React from 'react';
 import App from '../App';
 import {shallow} from 'enzyme';
 
-// Note: test renderer must be required after react-native.
-// import renderer from 'react-test-renderer';
+describe('App', () => {
+  const wrapper = shallow(<App></App>);
+  it('is Text visible?', () => { // RDD describe it!
+    expect(wrapper.find('Text').contains('ToDo TDD')).toBe(true);
+  })
 
-// it('renders correctly', () => {
-//   renderer.create(<App />);
-// });
+  it('is AddToDo visible?', () => { // 이거만 만들고 yarn test하면 실패하겠지
+    expect(wrapper.find('AddToDo')).toHaveLength(1); // toBeVisible 은 Jest에서 제공하는 함수가 아니다 toHave로~
+  })
 
-
-describe('Jest', () => {
-  it('is it working?', () => {
-    const a = 1;
-    expect(a + 1).toBe(2);
-  });
-});
-
-describe('Enzyme', () => {
-  it('is it working?', () => {
-    const text = 'some text';
-    const wrapper = shallow(<Text>{text}</Text>);
-    expect(wrapper.text()).toBe(text);
-  });
-});
+  it('is ToDoList visible?', () => {
+    expect(wrapper.find('ToDoList')).toHaveLength(1);
+  })
+})
