@@ -40,3 +40,24 @@ describe('rendering', () => {
         })
     })
 })
+
+describe('interaction', () => { // complete, delete 버튼 누를 때!
+    let wrapper;
+    let props;
+  
+    beforeEach(() => {
+      props = {
+          item: { text: 'first ToDo', completed: false },
+          index: 0,
+          onCompleted: jest.fn()
+      }
+      wrapper = shallow(<ToDoItem {...props}></ToDoItem>);
+
+      wrapper.find('Button').at(0).prop('onPress')(); // 여러 버튼 중 첫째 버튼을 찾아야하니 at(0)
+    })
+
+    it('should call the onCompleted callback with index', () => {
+        expect(props.onCompleted).toHaveBeenCalledTimes(1);
+        expect(props.onCompleted).toHaveBeenCalledWith(props.index);
+    })
+})
