@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
-
+import { View, Text, Button, StyleSheet } from 'react-native'
 export default class ToDoItem extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.default}>
                 <Text></Text>
                 <Button title="C" />
                 <Button title="D" />
@@ -12,3 +11,9 @@ export default class ToDoItem extends Component {
         )
     }
 }
+
+export const styles = StyleSheet.create({
+    default: {
+        backgroundColor: 'white',
+    }
+})
