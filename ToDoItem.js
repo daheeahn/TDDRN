@@ -5,6 +5,11 @@ export default class ToDoItem extends Component {
         const { onCompleted, index } = this.props;
         onCompleted(index);
     }
+    
+    _onDeleted = () => {
+        const { onDeleted, index } = this.props;
+        onDeleted(index);
+    }
 
     render() {
         const { item } = this.props;
@@ -12,7 +17,7 @@ export default class ToDoItem extends Component {
             <View style={item.completed ? styles.completed : styles.default}>
                 <Text></Text>
                 <Button title="C" onPress={this._onCompleted} />
-                <Button title="D" />
+                <Button title="D" onPress={this._onDeleted}/>
             </View>
         )
     }
